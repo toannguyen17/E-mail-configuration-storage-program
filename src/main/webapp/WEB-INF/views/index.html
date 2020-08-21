@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Email</title>
+</head>
+<body>
+<h1>Cấu hình hòm thư điện tử</h1>
+<div th:unless="${config}">
+    Chưa có cấu hình Email
+    <a th:href="@{create}">Tạo cấu hình</a>
+</div>
+
+<div th:if="${config}">
+    <table border="1">
+        <tr>
+            <td>Languages</td>
+            <td th:text="${config.getLanguages()}"></td>
+        </tr>
+        <tr>
+            <td>Page Size</td>
+            <td th:text="${config.getPage_size()}"></td>
+        </tr>
+        <tr>
+            <td>Spams filter</td>
+            <td th:text="${config.getFilter()}"></td>
+        </tr>
+        <tr>
+            <td>Signature</td>
+            <td th:text="${config.getSignature()}"></td>
+        </tr>
+    </table>
+    <a th:href="@{update}">Cập nhật</a>
+</div>
+
+</body>
+</html>
